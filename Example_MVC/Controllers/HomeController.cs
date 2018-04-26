@@ -26,5 +26,15 @@ namespace Example_MVC.Controllers
 
             return View();
         }
+
+        public ActionResult Enquiry()
+        {
+            return View();
+        }
+
+        public ActionResult Purchase()
+        {
+            return View();
+        }
     }
 }
