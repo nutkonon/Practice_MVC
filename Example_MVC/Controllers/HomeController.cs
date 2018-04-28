@@ -36,5 +36,11 @@ namespace Example_MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult DarkLayoutPage()
+        {
+            ViewBag.Title = "Nutkonon Layout";
+            return View();
+        }
     }
 }

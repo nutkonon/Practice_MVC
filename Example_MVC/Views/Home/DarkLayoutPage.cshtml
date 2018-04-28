@@ -1,0 +1,20 @@
+﻿
+@{
+    //ViewBag.Title = "DarkLayoutPage";
+    Layout = "~/Views/Shared/_DarkLayout.cshtml";
+}
+
+<h2>Content</h2>
+Hello Nutkonon
+@RenderPage("~/Views/Shared/_StaticPromotionPage.cshtml")
+@section Note
+{
+    I am RenderSectionArea.
+}
+@section Foot
+{
+    I am Footer Section Areas.
+}
+
+
+
