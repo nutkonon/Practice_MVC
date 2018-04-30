@@ -12,4 +12,5 @@ namespace Example_MVC.Models
         public string Category { get; set; }
         public decimal Price { get; set; }
     }
+
 }
