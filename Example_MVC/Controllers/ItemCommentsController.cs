@@ -40,11 +40,9 @@ namespace Example_MVC.Controllers
 
         public ActionResult ItemCommentDisplay()
         {
-            ItemCommentsViewModel IBCM = new ItemCommentsViewModel();
-            IBCM.item = GetItemDetails();
-            IBCM.comments = GetCommentList();
- 
-            return View(IBCM);
+            ViewBag.Item = GetItemDetails();
+            ViewBag.Comments = GetCommentList();
+            return View();
         }
 
     }
