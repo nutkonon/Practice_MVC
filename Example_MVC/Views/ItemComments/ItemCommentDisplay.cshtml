@@ -1,0 +1,35 @@
+﻿@model Example_MVC.Models.ItemCommentsViewModel
+@{
+    ViewBag.Title = "Comments";
+}
+<div>
+    <h4>Buyers Comments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<p>
+    <!-- ITEM DETAILS -->
+    <div style="background-color:burlywood; padding:5px;">
+        <h1 style="color:white">@Html.DisplayFor(i => i.item.Name)</h1>
+        <b>Category:</b> @Html.DisplayFor(i => i.item.Category)<br />
+        <b>Price:</b> @Html.DisplayFor(i => i.item.Price)
+        <hr />
+    </div>
+
+    <!-- LOADING COMMENTS -->
+    <h2>Comments</h2>
+    @foreach (var comments in Model.comments)
+    {
+        <h4><b>@comments.CommentsTitle</b></h4>
+        <b>@comments.BuyersName</b><br />
+        <b>Date:</b> @comments.Date <span>|</span>
+        <b>Star Rating: </b>@comments.StarRating<span>/5</span>
+        <br />
+        <i>@comments.Comments</i>
+        <hr />
+    }
+
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>

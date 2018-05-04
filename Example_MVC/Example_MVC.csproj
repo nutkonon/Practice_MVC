@@ -159,11 +159,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemCommentsController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ItemEFController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuyersCommentsModel .cs" />
+    <Compile Include="Models\ItemCommentsViewModel.cs" />
     <Compile Include="Models\ItemContext.cs" />
     <Compile Include="Models\ItemDBHandler.cs" />
     <Compile Include="Models\ItemList.cs" />
@@ -226,6 +229,7 @@
     <Content Include="Views\ItemEF\Details.cshtml" />
     <Content Include="Views\ItemEF\Edit.cshtml" />
     <Content Include="Views\ItemEF\Index.cshtml" />
+    <Content Include="Views\ItemComments\ItemCommentDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
