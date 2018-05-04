@@ -40,8 +40,8 @@ namespace Example_MVC.Controllers
 
         public ActionResult ItemCommentDisplay()
         {
-            TempData["Item"] = GetItemDetails();
-            TempData["Comments"] = GetCommentList();
+            Session["Item"] = GetItemDetails();
+            Session["Comments"] = GetCommentList();
             return View();
         }
 
