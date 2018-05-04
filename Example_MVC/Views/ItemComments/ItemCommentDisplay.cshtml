@@ -1,8 +1,8 @@
 ﻿@using Example_MVC.Models
 @{
     ViewBag.Title = "Comments";
-    ItemModel Item = ViewBag.Item as ItemModel;
-    List<BuyersCommentsModel> Comments = ViewBag.Comments as List<BuyersCommentsModel>;
+    ItemModel Item = ViewData["Item"] as ItemModel;
+    List<BuyersCommentsModel> Comments = ViewData["Comments"] as List<BuyersCommentsModel>;
 }
 <div>
     <h4>Pass Data using ViewBag</h4>
@@ -13,21 +13,35 @@
 <p>
     <!-- ITEM DETAILS -->
     <div style="background-color:burlywood; padding:5px;">
-        <h1 style="color:green">@Item.Name</h1>
-        <b>Category:</b> @Item.Category<br />
-        <b>Price:</b> @Item.Price
+        @if (Item != null)
+        {
+            <h1 style="color:white">@Item.Name</h1>
+            <b>Category:</b> @Item.Category<br />
+            <b>Price:</b> @Item.Price
+        }
+        else
+        {
+            <h3 style="color:red">Sorry! Item Not Found</h3>
+        }
         <hr />
     </div>
     <!-- LOADING COMMENTS -->
     <h2>Comments</h2>
-    @foreach (var comments in Comments)
+    @if (Comments != null)
     {
-        <h4><b>@comments.CommentsTitle</b></h4>
-        <b>@comments.BuyersName</b><br />
-        <b>Date:</b> @comments.Date <span>|</span>
-        <b>Star Rating: </b>@comments.StarRating<<span>/5</span>
+        foreach (var comments in Comments)
+        {
+            <h4><b>@comments.CommentsTitle</b></h4>
+            <b>@comments.BuyersName</b><br />
+            <b>Date:</b> @comments.Date <span>|</span>
+            <b>Star Rating: </b>@comments.StarRating<span>/5</span>
             <br />
             <i>@comments.Comments</i>
             <hr />
+        }
+    }
+    else
+    {
+        <h3 style="color:red">No Comments Found!</h3>
     }
 </p>
