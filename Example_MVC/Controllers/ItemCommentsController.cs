@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Example_MVC.Models;
+using System.Dynamic;
 
 namespace Example_MVC.Controllers
 {
@@ -40,8 +41,10 @@ namespace Example_MVC.Controllers
 
         public ActionResult ItemCommentDisplay()
         {
-            var commentdisplay = new Tuple<ItemModel,List<BuyersCommentsModel>>(GetItemDetails(), GetCommentList());
-            return View(commentdisplay);
+            dynamic cmnt = new ExpandoObject();
+            cmnt.Item = GetItemDetails();
+            cmnt.Comments = GetCommentList();
+            return View(cmnt);
         }
 
     }
