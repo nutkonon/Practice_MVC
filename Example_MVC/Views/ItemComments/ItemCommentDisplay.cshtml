@@ -1,11 +1,11 @@
 ﻿@using Example_MVC.Models
 @{
     ViewBag.Title = "Comments";
-    ItemModel Item = ViewData["Item"] as ItemModel;
-    List<BuyersCommentsModel> Comments = ViewData["Comments"] as List<BuyersCommentsModel>;
+    ItemModel Item = TempData["Item"] as ItemModel;
+    List<BuyersCommentsModel> Comments = TempData["Comments"] as List<BuyersCommentsModel>;
 }
 <div>
-    <h4>Pass Data using ViewBag</h4>
+    <h4>Pass Data using TempData</h4>
     <hr />
     <dl class="dl-horizontal">
     </dl>
