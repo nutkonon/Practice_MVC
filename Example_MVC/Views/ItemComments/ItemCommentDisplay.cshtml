@@ -1,11 +1,11 @@
 ﻿@using Example_MVC.Models
+@model Tuple<ItemModel, List<BuyersCommentsModel>>
 @{
-    ViewBag.Title = "Comments";
-    ItemModel Item = Session["Item"] as ItemModel;
-    List<BuyersCommentsModel> Comments = Session["Comments"] as List<BuyersCommentsModel>;
-}
+ViewBag.Title = "Comments";
+ }
+
 <div>
-    <h4>Pass Data using Session</h4>
+    <h4>Pass Data using Tuples</h4>
     <hr />
     <dl class="dl-horizontal">
     </dl>
@@ -13,35 +13,24 @@
 <p>
     <!-- ITEM DETAILS -->
     <div style="background-color:burlywood; padding:5px;">
-        @if (Item != null)
-        {
-            <h1 style="color:white">@Item.Name</h1>
-            <b>Category:</b> @Item.Category<br />
-            <b>Price:</b> @Item.Price
-        }
-        else
-        {
-            <h3 style="color:red">Sorry! Item Not Found</h3>
-        }
+
+        <h1 style="color:white">@Model.Item1.Name</h1>
+        <b>Category:</b> @Model.Item1.Category<br />
+        <b>Price:</b> @Model.Item1.Price
+
         <hr />
     </div>
     <!-- LOADING COMMENTS -->
     <h2>Comments</h2>
-    @if (Comments != null)
+
+    @foreach (var comments in Model.Item2)
     {
-        foreach (var comments in Comments)
-        {
-            <h4><b>@comments.CommentsTitle</b></h4>
+        <h4><b>@comments.CommentsTitle</b></h4>
             <b>@comments.BuyersName</b><br />
             <b>Date:</b> @comments.Date <span>|</span>
             <b>Star Rating: </b>@comments.StarRating<span>/5</span>
-            <br />
-            <i>@comments.Comments</i>
-            <hr />
-        }
-    }
-    else
-    {
-        <h3 style="color:red">No Comments Found!</h3>
+                <br />
+                <i>@comments.Comments</i>
+                <hr />
     }
 </p>

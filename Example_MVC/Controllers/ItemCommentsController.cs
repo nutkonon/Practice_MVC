@@ -40,9 +40,8 @@ namespace Example_MVC.Controllers
 
         public ActionResult ItemCommentDisplay()
         {
-            Session["Item"] = GetItemDetails();
-            Session["Comments"] = GetCommentList();
-            return View();
+            var commentdisplay = new Tuple<ItemModel,List<BuyersCommentsModel>>(GetItemDetails(), GetCommentList());
+            return View(commentdisplay);
         }
 
     }
