@@ -23,7 +23,8 @@ namespace Example_MVC.Controllers
                 ID = 1,
                 Name = "HP Printer",
                 Category = "ComputerParts",
-                Price = 8840
+                Price = 8840,
+                Comments = GetCommentList()
             };
             return iModel;
         }
@@ -41,18 +42,8 @@ namespace Example_MVC.Controllers
 
         public ActionResult ItemCommentDisplay()
         {
-            return View();
-        }
-
-        public PartialViewResult RenderItem()
-        {
-            return PartialView(GetItemDetails());
-        }
-
-        public PartialViewResult RenderComment()
-        {
-            ViewBag.Comments = GetCommentList();
-            return PartialView();
+            ItemModel item = GetItemDetails();
+            return View(item);
         }
 
     }
