@@ -50,5 +50,65 @@ namespace Example_MVC.Controllers
             ViewBag.Title = "Nutkonon Layout";
             return View();
         }
+
+        public ActionResult TestForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FormWeakly(int txtId, string txtName, string txtCategory, string txtPrice, string chkAddon)
+        {
+            ViewBag.Id = txtId;
+            ViewBag.Name = txtName;
+            ViewBag.Category = txtCategory;
+            ViewBag.Price = txtPrice;
+            if (chkAddon != null)
+                ViewBag.Addon = "Selected";
+            else
+                ViewBag.Addon = "Not Selected";
+            return View("TestForm");
+        }
+
+        [HttpPost]
+        public ActionResult FormStrongly(Models.ItemModel it)
+        {
+            ViewBag.Id = it.ID;
+            ViewBag.Name = it.Name;
+            ViewBag.Category = it.Category;
+            ViewBag.Price = it.Price;
+            return View("TestForm");
+        }
+
+        [HttpPost]
+        public ActionResult FormStronglyAJ(Models.ItemModel it)
+        {
+            if (ModelState.IsValid)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append("ID: " + it.ID + "<br />");
+                sb.Append("Name: " + it.Name + "<br />");
+                sb.Append("Category: " + it.Category + "<br />");
+                sb.Append("Price: " + it.Price + "<br />");
+                return Content(sb.ToString());
+            }
+            else
+            {
+                return View("TestForm");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult FormPureHTML(Models.ItemModel it)
+        {
+            string value = "ID: " + Convert.ToString(it.ID)
+                + "<br />Name: " + it.Name
+                + "<br />Category: " + Convert.ToString(it.Category)
+                + "<br />Price: " + Convert.ToString(it.Price);
+
+            string s = "$('#output').html('" + value + "');";
+            return JavaScript(s);
+        }
+
     }
 }

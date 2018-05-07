@@ -1,0 +1,149 @@
+﻿@model Example_MVC.Models.ItemModel
+@{
+    ViewBag.Title = "TestForm";
+}
+
+<h2>TestForm</h2>
+
+<h4 style="color:green">
+    <b>ID:</b>    @ViewBag.ID <br />
+    <b>Name:</b>  @ViewBag.Name <br />
+    <b>Category:</b> @ViewBag.Category <br />
+    <b>Price:</b> @ViewBag.Price <br />
+    <b>Addon:</b> @ViewBag.Addon
+</h4>
+<hr />
+<h3><b>Forms: Weakly Typed</b></h3>
+<form action="FormWeakly" method="post">
+    <table>
+        <tr>
+            <td>Enter ID: </td>
+            <td><input type="text" name="txtId" inputmode="numeric" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>Enter Name: </td>
+            <td><input type="text" name="txtName" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>Enter Category: </td>
+            <td><input type="text" name="txtCategory" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>Enter Price: </td>
+            <td><input type="text" name="txtPrice" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Addon: </td>
+            <td><input type="checkbox" name="chkAddon"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Form" class="form-control btn-default"/></td>
+        </tr>
+    </table>
+</form>
+
+<h3><b>Forms: Strongly Typed</b></h3>
+@using (Html.BeginForm("FormStrongly", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Enter ID: </td>
+            <td>@Html.EditorFor(m => m.ID, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Enter Name: </td>
+            <td>@Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td>@Html.EditorFor(m => m.Category, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>@Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Form" class="form-control btn-default"/></td>
+        </tr>
+    </table>
+}
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<h4 id="id1" style="color:purple"></h4>
+<hr />
+<h3><b>Forms - Strongly Typed AJAX (Asynchronous)</b></h3>
+@using (Ajax.BeginForm("FormStronglyAJ", "Home", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "id1",
+    LoadingElementId = "LoadingImage",
+    OnSuccess = "onSuccess_Message",
+    OnFailure = "onFailure_Message"
+
+}))
+{
+    <table>
+        <tr>
+            <td>Enter ID: </td>
+            <td>@Html.EditorFor(m => m.ID, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Enter Name: </td>
+            <td>@Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td>@Html.EditorFor(m => m.Category, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>@Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Form" class="form-control btn-default" /></td>
+        </tr>
+    </table>
+        <div id="LoadingImage" style="display:none">Loading...</div>
+        <div id="onSuccess_Message"></div>
+        <div id="onFailure_Message"></div>
+}
+
+<h3><b>Forms - Pure HTML and JQUERY</b></h3>
+
+<table>
+    <tr>
+        <td>Enter ID: </td>
+        <td><input type="text" id="ID2" class="form-control"/></td>
+    </tr>
+    <tr>
+        <td>Enter Name: </td>
+        <td><input type="text" id="Name2" class="form-control"/></td>
+    </tr>
+    <tr>
+        <td>Category: </td>
+        <td><input type="text" id="Category2" class="form-control"/></td>
+    </tr>
+    <tr>
+        <td>Price: </td>
+        <td><input type="text" id="Price2" class="form-control" /></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button onclick="submit()" class="form-control btn-default">Submit Form</button></td>
+    </tr>
+</table>
+
+<h4 style="color:green" id="output"></h4>
+
+<script>
+    function submit(){
+        var data = {
+            ID: $('#ID2').val(),
+            Name: $('#Name2').val(),
+            Category: $('#Category2').val(),
+            Price: $('#Price2').val()
+        };
+
+        $.post("/Home/FormPureHTML", { it: data }, function () { alert('Successfully Saved') });
+    }
+</script>
