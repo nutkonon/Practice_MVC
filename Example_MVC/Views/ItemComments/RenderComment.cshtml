@@ -1,0 +1,17 @@
+﻿@using Example_MVC.Models
+@{
+    List<BuyersCommentsModel> comments = ViewBag.Comments as List<BuyersCommentsModel>;
+}
+<!-- LOADING COMMENTS -->
+<h2>Comments</h2>
+
+@foreach (var comment in comments)
+{
+    <h4><b>@comment.CommentsTitle</b></h4>
+    <b>@comment.BuyersName</b><br />
+    <b>Date:</b> @comment.Date <span>|</span>
+    <b>Star Rating: </b>@comment.StarRating<span>/5</span>
+    <br />
+    <i>@comment.Comments</i>
+    <hr />
+}

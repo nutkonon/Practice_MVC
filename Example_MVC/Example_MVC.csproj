@@ -230,6 +230,8 @@
     <Content Include="Views\ItemEF\Edit.cshtml" />
     <Content Include="Views\ItemEF\Index.cshtml" />
     <Content Include="Views\ItemComments\ItemCommentDisplay.cshtml" />
+    <Content Include="Views\ItemComments\RenderItem.cshtml" />
+    <Content Include="Views\ItemComments\RenderComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -41,10 +41,18 @@ namespace Example_MVC.Controllers
 
         public ActionResult ItemCommentDisplay()
         {
-            dynamic cmnt = new ExpandoObject();
-            cmnt.Item = GetItemDetails();
-            cmnt.Comments = GetCommentList();
-            return View(cmnt);
+            return View();
+        }
+
+        public PartialViewResult RenderItem()
+        {
+            return PartialView(GetItemDetails());
+        }
+
+        public PartialViewResult RenderComment()
+        {
+            ViewBag.Comments = GetCommentList();
+            return PartialView();
         }
 
     }
