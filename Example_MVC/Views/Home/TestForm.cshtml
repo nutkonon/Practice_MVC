@@ -109,7 +109,7 @@
         <div id="onFailure_Message"></div>
 }
 
-<h3><b>Forms - Pure HTML and JQUERY</b></h3>
+<h3><b>Forms: Pure HTML and JQUERY</b></h3>
 
 <table>
     <tr>
@@ -147,3 +147,29 @@
         $.post("/Home/FormPureHTML", { it: data }, function () { alert('Successfully Saved') });
     }
 </script>
+
+<h3><b>Forms: Form Collection Objects</b></h3>
+@using (Html.BeginForm("FormCollec", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Enter ID: </td>
+            <td>@Html.EditorFor(m => m.ID, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Enter Name: </td>
+            <td>@Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td>@Html.EditorFor(m => m.Category, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>@Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Form" class="form-control btn-default" /></td>
+        </tr>
+    </table>
+}

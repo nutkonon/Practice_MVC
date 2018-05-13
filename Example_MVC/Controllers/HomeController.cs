@@ -110,5 +110,15 @@ namespace Example_MVC.Controllers
             return JavaScript(s);
         }
 
+        [HttpPost]
+        public ActionResult FormCollec(FormCollection fc)
+        {
+            ViewBag.Id = fc["ID"];
+            ViewBag.Name = fc["Name"];
+            ViewBag.Category = fc["Category"];
+            ViewBag.Price = fc["Price"];
+            return View("TestForm");
+        }
+
     }
 }
