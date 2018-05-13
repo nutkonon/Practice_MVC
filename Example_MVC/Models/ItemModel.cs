@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Web.Mvc;
 
 namespace Example_MVC.Models
 {
@@ -14,6 +17,8 @@ namespace Example_MVC.Models
 
         //Add Navigation Property
         public List<BuyersCommentsModel> Comments { get; set; }
+
+        public StudentModel student { get; set; }
     }
 
 }

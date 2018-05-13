@@ -126,7 +126,7 @@ namespace Example_MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult ValidationItem(Models.ItemModel it)
+        public ActionResult ValidationItemModelState(Models.ItemModel it)
         {
             if (it.ID.ToString() == "")
                 ModelState.AddModelError("ID", "ID Required");
@@ -153,6 +153,27 @@ namespace Example_MVC.Controllers
                 return View("TestValidation");
             }
             
+        }
+
+        [HttpPost]
+        public ActionResult ValidationItemDataAnnotation(Models.ItemModel it)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.StdName = it.student.Name;
+                ViewBag.Email = it.student.Email;
+                ViewBag.ConfirmEmail = it.student.ConfirmEmail;
+                ViewBag.Age = it.student.Age;
+                return View("TestValidation");
+            }
+            else
+            {
+                ViewBag.StdName = "No Student Data";
+                ViewBag.Email = "No Student Data";
+                ViewBag.ConfirmEmail = "No Student Data";
+                ViewBag.Age = "No Student Data";
+                return View("TestValidation");
+            }
         }
     }
 }

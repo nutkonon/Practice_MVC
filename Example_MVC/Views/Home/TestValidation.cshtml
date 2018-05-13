@@ -1,11 +1,10 @@
 ﻿@model Example_MVC.Models.ItemModel
-
 @{
     ViewBag.Title = "TestValidation";
 }
-
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <h2>TestValidation</h2>
-
 <h3 style="color:brown">Item Details</h3>
 <h4 style="color:green">
     <b>ID:</b>    @ViewBag.ID <br />
@@ -14,8 +13,8 @@
     <b>Price:</b> @ViewBag.Price <br />
 </h4>
 <h3><b>Validation using ModelState Object</b></h3>
-@using (Html.BeginForm("ValidationItem", "Home", FormMethod.Post))
-{
+@using (Html.BeginForm("ValidationItemModelState", "Home", FormMethod.Post))
+{   
     <table>
         <tr>
             <td>Enter ID: </td>
@@ -42,3 +41,38 @@
         </tr>
     </table>
 }
+    <h3><b>Data Annotation Validation</b></h3>
+    @using (Html.BeginForm("ValidationItemDataAnnotation", "Home", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>Enter Name: </td>
+                <td>@Html.EditorFor(m => m.student.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(m => m.student.Name)</td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>@Html.EditorFor(m => m.student.Email, new { htmlAttributes = new { @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(m => m.student.Email)</td>
+            </tr>
+            <tr>
+                <td>ConfirmEmail: </td>
+                <td>@Html.EditorFor(m => m.student.ConfirmEmail, new { htmlAttributes = new { @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(m => m.student.ConfirmEmail)</td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td>@Html.EditorFor(m => m.student.Age, new { htmlAttributes = new { @class = "form-control" } })</td>
+                <td>@Html.ValidationMessageFor(m => m.student.Age)</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="Submit Form" class="form-control btn-default" /></td>
+            </tr>
+        </table>
+    }
+<h3 style="color:brown">Student Details</h3>
+<h4 style="color:green">
+    <b>Name:</b>  @ViewBag.StdName <br />
+    <b>Email:</b> @ViewBag.Email <br />
+    <b>Age:</b> @ViewBag.Age <br />
+</h4>

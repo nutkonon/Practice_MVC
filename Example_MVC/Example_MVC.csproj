@@ -162,6 +162,7 @@
     <Compile Include="Controllers\ItemCommentsController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ItemEFController.cs" />
+    <Compile Include="CustomAttribute\MinAgeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +172,7 @@
     <Compile Include="Models\ItemDBHandler.cs" />
     <Compile Include="Models\ItemList.cs" />
     <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
