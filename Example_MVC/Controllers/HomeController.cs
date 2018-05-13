@@ -120,5 +120,39 @@ namespace Example_MVC.Controllers
             return View("TestForm");
         }
 
+        public ActionResult TestValidation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ValidationItem(Models.ItemModel it)
+        {
+            if (it.ID.ToString() == "")
+                ModelState.AddModelError("ID", "ID Required");
+            if (string.IsNullOrEmpty(it.Name))
+                ModelState.AddModelError("Name", "Name Required");
+            if (string.IsNullOrEmpty(it.Category))
+                ModelState.AddModelError("Category", "Category Required");
+            if(it.Price.ToString() == "")
+                ModelState.AddModelError("Price", "Price Required");
+            if (ModelState.IsValid)
+            {
+                ViewBag.ID = it.ID;
+                ViewBag.Name = it.Name;
+                ViewBag.Category = it.Category;
+                ViewBag.Price = it.Price;
+                return View("TestValidation");
+            }
+            else
+            {
+                ViewBag.ID = "No Data";
+                ViewBag.Name = "No Data";
+                ViewBag.Category = "No Data";
+                ViewBag.Price = "No Data";
+                return View("TestValidation");
+            }
+            
+        }
     }
 }
