@@ -123,5 +123,15 @@ namespace Example_MVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet]
+        public JsonResult RemoteValidation(string Name)
+        {
+            bool xref = false;
+            var itemList = db.ItemLists.Where(it => (it.Name == Name)).ToList();
+            if (itemList.Count == 0)
+                xref = true;
+            return Json(xref, JsonRequestBehavior.AllowGet);
+        }
     }
 }
