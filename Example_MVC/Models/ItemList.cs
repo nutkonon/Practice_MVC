@@ -12,13 +12,16 @@ namespace Example_MVC.Models
     {   
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Name is Required")]
         [StringLength(50)]
         [Remote("RemoteValidation", "ItemEF", ErrorMessage = "Name Already Exist. Please choose another Name.")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Category is Required")]
         [StringLength(50)]
         public string Category { get; set; }
 
+        [Required(ErrorMessage = "Price is Required")]
         public decimal? Price { get; set; }
     }
 }
